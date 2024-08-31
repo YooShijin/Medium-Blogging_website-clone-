@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BACKEND_URL } from "../config";
 import axios from "axios";
 import { SignupInput } from "@asmitk/meduim-common";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
         `${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`,
         postInputs
       );
-      const jwt = response.data;
+      const jwt = response.data["jwt"];
       localStorage.setItem("token", jwt);
       navigate("/blogs");
     } catch (e) {
