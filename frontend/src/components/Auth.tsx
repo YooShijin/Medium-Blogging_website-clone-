@@ -11,7 +11,6 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     email: "",
     password: "",
   });
-  
 
   async function sendRequest() {
     try {
@@ -23,6 +22,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
       localStorage.setItem("token", jwt);
       navigate("/blogs");
     } catch (e) {
+      console.log(e);
       alert("Error while signing up");
     }
   }
@@ -49,8 +49,8 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
 
           {type === "signup" ? (
             <LabelledInput
-              label="Name"
-              placeholder="John Doe"
+              label="Username"
+              placeholder="Username"
               onChange={(e) => {
                 setPostInputs({
                   ...postInputs,
@@ -61,8 +61,8 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
           ) : null}
 
           <LabelledInput
-            label="Username"
-            placeholder="a7mitk"
+            label="Email"
+            placeholder="email"
             onChange={(e) => {
               setPostInputs({
                 ...postInputs,
@@ -74,7 +74,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
           <LabelledInput
             label="Password"
             type={"password"}
-            placeholder="123456"
+            placeholder="password"
             onChange={(e) => {
               setPostInputs({
                 ...postInputs,
