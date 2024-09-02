@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Appbar } from "../components/Appbar";
 import { BlogCard } from "../components/BlogCard";
 import { BlogSkeleton } from "../components/BlogSkeleton";
@@ -5,6 +6,7 @@ import { useBlogs } from "../hooks";
 
 export const Blogs = () => {
   const { loading, blogs } = useBlogs();
+ 
 
   if (loading) {
     return (
@@ -37,7 +39,6 @@ export const Blogs = () => {
               authorname={blog.author.name || "John Doe"}
               title={blog.title}
               content={blog.content}
-              publishedDate={getRandomDateWithoutYear()}
             />
           ))}
         </div>
@@ -46,13 +47,4 @@ export const Blogs = () => {
   );
 };
 
-function getRandomDateWithoutYear(): string {
-  const start = new Date("2024-01-01").getTime();
-  const end = new Date("2024-12-31").getTime();
-  const randomTime = new Date(start + Math.random() * (end - start));
 
-  return randomTime.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-  });
-}
