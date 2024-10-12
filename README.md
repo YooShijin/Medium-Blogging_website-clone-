@@ -4,7 +4,7 @@ This blogging application, inspired by Medium, was developed as part of a practi
 
 ## Live Demo
 
-Check out the live app [here](https://blogging-app-like-medium.vercel.app/).
+Check out the live app [here](https://medium-blogging-website-clone.vercel.app/).
 
 ## Features
 
